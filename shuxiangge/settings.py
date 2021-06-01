@@ -105,6 +105,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+AUTH_USER_MODEL = 'users.User'
+
 # simpleui
 SIMPLEUI_ANALYSIS = False  # 是否上传使用分析
 

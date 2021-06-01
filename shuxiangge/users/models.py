@@ -1,21 +1,19 @@
+from django.contrib.auth.models import AbstractUser as DjangoUser
 from ..books.models import Book, BaseModel, models
 
-SEX = (
+GENDER = (
     (1, u"男"),
     (2, u"女"),
 )
 
 
-class User(BaseModel):
-    account = models.CharField(max_length=32, null=False, verbose_name=u"账户名")
-    password = models.CharField(max_length=128, null=False, verbose_name=u"密码")
-    email = models.CharField(max_length=64, null=False, verbose_name=u"邮箱")
-    phone = models.IntegerField(null=False, verbose_name=u"手机号")
-    sex = models.SmallIntegerField(null=False, choices=SEX, verbose_name=u"性别")
-    qq = models.CharField(max_length=32, null=False, verbose_name=u"qq")
+class User(DjangoUser):
+    phone = models.CharField(max_length=11, blank=True, null=True, verbose_name=u"手机号")
+    gender = models.SmallIntegerField(blank=True, null=True, choices=GENDER, verbose_name=u"性别")
+    qq = models.CharField(blank=True, null=True, max_length=12, verbose_name=u"qq")
 
     def __str__(self):
-        return self.account
+        return self.username
 
     class Meta:
         verbose_name = u"用户管理"
@@ -29,4 +27,14 @@ class Favorite(models.Model):
 
     class Meta:
         verbose_name = u"收藏管理"
+        verbose_name_plural = verbose_name
+
+
+class ReadLog(models.Model):
+    user_id = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL, verbose_name=u"用户名")
+    book_id = models.ForeignKey(Book, on_delete=models.CASCADE, verbose_name=u"小说名")
+    created_time = models.DateTimeField(verbose_name=u"记录时间")
+
+    class Meta:
+        verbose_name = u"阅读记录"
         verbose_name_plural = verbose_name

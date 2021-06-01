@@ -1,8 +1,9 @@
-from ..utils.base import BaseModel, models
+from ..utils.base import models, BaseModel
 
 BOOK_STATUS = (
     (0, u"下架"),
-    (1, u"上架"),
+    (1, u"连载"),
+    (2, u"完本"),
 )
 
 
