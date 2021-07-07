@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shuxiangge.books',
     'shuxiangge.users',
+    'import_export'
 ]
 
 MIDDLEWARE = [
