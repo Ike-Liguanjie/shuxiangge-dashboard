@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'shuxiangge.books',
     'shuxiangge.users',
 ]
@@ -111,3 +112,10 @@ AUTH_USER_MODEL = 'users.User'
 SIMPLEUI_ANALYSIS = False  # 是否上传使用分析
 
 SIMPLEUI_HOME_INFO = False  # 属否显示服务器信息
+
+# DRF
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAdminUser',
+    ],
+}
