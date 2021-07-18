@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'shuxiangge.books',
     'shuxiangge.users',
+    'import_export'
 ]
 
 MIDDLEWARE = [
